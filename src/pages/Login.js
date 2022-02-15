@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import fetchToken from '../services/tokenApi';
-import { actionToken } from '../store/actions';
+import { actionToken, actionData } from '../store/actions';
 
 class Login extends Component {
   constructor() {
@@ -15,11 +15,17 @@ class Login extends Component {
   }
 
    handleOnClick = async () => {
-     const { history, addToken } = this.props;
+     const { emailInput, nameInput } = this.state;
+     const { history, addToken, addData } = this.props;
      const data = await fetchToken();
      const { token } = data;
+     const payload = {
+       email: emailInput,
+       name: nameInput,
+     };
      console.log(token);
      addToken(token);
+     addData(payload);
      localStorage.setItem('token', JSON.stringify(token));
      history.push('/game');
    }
@@ -99,6 +105,7 @@ Login.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   addToken: (token) => dispatch(actionToken(token)),
+  addData: (data) => dispatch(actionData(data)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

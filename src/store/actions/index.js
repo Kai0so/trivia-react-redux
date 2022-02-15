@@ -1,8 +1,8 @@
-export const ADD_EMAIL = 'ADD_EMAIL';
+export const ADD_DATA = 'ADD_DATA';
 export const ADD_TOKEN = 'ADD_TOKEN';
 
-export const actionEmail = (payload) => ({
-  type: ADD_EMAIL,
+export const actionData = (payload) => ({
+  type: ADD_DATA,
   payload,
 });
 
