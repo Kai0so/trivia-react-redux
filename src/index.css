@@ -11,3 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.wrongAnswer {
+  border: 3px solid rgb(255, 0, 0);
+}
+
+.wrongAnswer {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.box_login {
+  display: flex;
+  align-items: center;
+}
