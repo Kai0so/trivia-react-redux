@@ -12,17 +12,9 @@ export default class Answers extends Component {
     };
   }
 
-  // clearState = () => {
-  //   this.setState({ sortedPositions: [] });
-  // }
-
   componentDidMount() {
     this.shuffledAnswers();
   }
-
-  // componentWillUnmount() {
-  //   this.clearState();
-  // }
 
   buttonDisabled = () => {
     this.setState({ isDisabled: true });
@@ -51,7 +43,7 @@ export default class Answers extends Component {
     return (
       <div>
         <div data-testid="answer-options" className="answers_game">
-          { sortedPositions.filter((question, i) => (
+          { sortedPositions.map((question, i) => (
             (question === correctAnswer)
               ? (
                 <button
