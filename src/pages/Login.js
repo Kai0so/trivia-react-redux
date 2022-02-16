@@ -23,10 +23,9 @@ class Login extends Component {
        email: emailInput,
        name: nameInput,
      };
-     console.log(token);
      addToken(token);
      addData(payload);
-     localStorage.setItem('token', JSON.stringify(token));
+     localStorage.setItem('token', token);
      history.push('/game');
    }
 
@@ -49,50 +48,48 @@ class Login extends Component {
     const { emailInput, nameInput, isDisabled } = this.state;
     return (
       <div className="box_login">
-        <h1> Login </h1>
-        <label htmlFor="email">
-          Email do gravatar:
-          <input
-            id="emailInput"
-            type="email"
-            data-testid="input-gravatar-email"
-            name="email"
-            value={ emailInput }
-            onChange={ this.handleInputChange }
-          />
-        </label>
-        <label htmlFor="name">
-          Nome do jogador:
-          <input
-            type="text"
-            id="nameInput"
-            data-testid="input-player-name"
-            name="name"
-            value={ nameInput }
-            onChange={ this.handleInputChange }
-          />
-        </label>
-        <button
-          className="play-button"
-          type="button"
-          data-testid="btn-play"
-          disabled={ isDisabled }
-          onClick={ this.handleOnClick }
-        >
-          Play!
-        </button>
-        <button
-          className="config-button"
-          type="button"
-          data-testid="btn-settings"
-          onClick={ () => history.push('/config') }
-        >
-          &#128736;
-        </button>
-
-        {/* <h1>
-          { token }
-        </h1> */}
+        <form className="form_login">
+          <h1 className=""> Login </h1>
+          <label htmlFor="email" className="login_element">
+            Email do gravatar:
+            <input
+              id="emailInput"
+              type="email"
+              data-testid="input-gravatar-email"
+              name="email"
+              value={ emailInput }
+              onChange={ this.handleInputChange }
+            />
+          </label>
+          <label htmlFor="name" className="login_element">
+            Nome do jogador:
+            <input
+              type="text"
+              id="nameInput"
+              data-testid="input-player-name"
+              name="name"
+              value={ nameInput }
+              onChange={ this.handleInputChange }
+            />
+          </label>
+          <div className="login_buttons">
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={ isDisabled }
+              onClick={ this.handleOnClick }
+            >
+              Play!
+            </button>
+            <button
+              type="button"
+              data-testid="btn-settings"
+              onClick={ () => history.push('/config') }
+            >
+              &#128736;
+            </button>
+          </div>
+        </form>
       </div>
     );
   }

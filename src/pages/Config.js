@@ -3,11 +3,11 @@ import React from 'react';
 class Config extends React.Component {
   render() {
     return (
-      <section>
+      <section className="section_config">
         <h1 data-testid="settings-title">
           Configurações
         </h1>
-        <form>
+        <form className="form_config">
           <label htmlFor="categoria">
             Categoria:
             <select id="categoria">
