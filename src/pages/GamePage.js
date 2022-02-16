@@ -61,12 +61,19 @@ class GamePage extends React.Component {
           ) : (
 
             <section>
+              <h1 data-testid="question-category">
+                {result.results[0].category}
+              </h1>
+              <h1 data-testid="question-text">
+                {result.results[0].question}
+              </h1>
 
               <Answers
                 result={ result }
                 index={ indexQuestion }
                 type={ result.results[indexQuestion].type }
               />
+              <button type="button" data-testid="btn-next"> Próxima </button>
             </section>)}
         </>
       );

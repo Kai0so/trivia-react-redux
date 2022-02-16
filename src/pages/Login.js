@@ -25,7 +25,6 @@ class Login extends Component {
      };
      addToken(token);
      addData(payload);
-     console.log(token);
      localStorage.setItem('token', token);
      history.push('/game');
    }
