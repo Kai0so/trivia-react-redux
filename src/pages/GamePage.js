@@ -6,6 +6,7 @@ import fetchTrivia from '../services/questionsApi';
 import fetchToken from '../services/tokenApi';
 import { actionToken } from '../store/actions';
 import Loading from '../components/Loading';
+import Answers from '../components/Answers';
 
 class GamePage extends React.Component {
   constructor() {
@@ -15,7 +16,6 @@ class GamePage extends React.Component {
       result: {},
       apiLoading: true,
       indexQuestion: 0,
-      indexAnswer: 0,
     };
   }
 
@@ -51,7 +51,7 @@ class GamePage extends React.Component {
     }
 
     render() {
-      const { result, apiLoading, indexQuestion, indexAnswer, index } = this.state;
+      const { result, apiLoading, indexQuestion } = this.state;
 
       return (
         <>
@@ -61,28 +61,12 @@ class GamePage extends React.Component {
           ) : (
 
             <section>
-              <div className="question_game">
-                <h2 data-testid="question-category">
-                  {result.results[indexQuestion].category}
-                </h2>
-                <h2 data-testid="question-text">
-                  {result.results[indexQuestion].question}
-                </h2>
-              </div>
-              <div data-testid="answer-options" className="answers_game">
-                <button type="button" data-testid="correct-answer">
-                  { result.results[indexQuestion].correct_answer}
-                </button>
-                <button type="button" data-testid={ `wrong-answer-${index}` }>
-                  {result.results[indexQuestion].incorrect_answers[indexAnswer]}
-                </button>
-                <button type="button" data-testid={ `wrong-answer-${index}` }>
-                  {result.results[indexQuestion].incorrect_answers[indexAnswer]}
-                </button>
-                <button type="button" data-testid={ `wrong-answer-${index}` }>
-                  {result.results[indexQuestion].incorrect_answers[indexAnswer]}
-                </button>
-              </div>
+
+              <Answers
+                result={ result }
+                index={ indexQuestion }
+                type={ result.results[indexQuestion].type }
+              />
             </section>)}
         </>
       );
