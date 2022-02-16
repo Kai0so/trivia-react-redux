@@ -7,7 +7,7 @@ class Header extends React.Component {
   render() {
     const { name, email, score } = this.props;
     return (
-      <section>
+      <section className="header_game">
         <h2 data-testid="header-player-name">{ name }</h2>
         <img
           data-testid="header-profile-picture"
