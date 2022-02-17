@@ -6,6 +6,7 @@ class Timer extends Component {
     super();
     this.state = {
       seconds: 30,
+      ATIVO: false,
     };
   }
 
@@ -24,15 +25,19 @@ class Timer extends Component {
       if (seconds === 0) {
         clearInterval(interval);
         buttonDisabled();
+        this.setState(() => ({
+          ATIVO: true,
+        }));
       }
     }, second);
   }
 
   render() {
-    const { seconds } = this.state;
+    const { seconds, ATIVO } = this.state;
     return (
       <h3>
         Timer:
+        {ATIVO}
         {seconds}
       </h3>
     );
