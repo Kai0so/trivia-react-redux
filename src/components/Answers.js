@@ -54,11 +54,6 @@ class Answers extends Component {
     });
   }
 
-  // redirectFeedBack = () => {
-  //   const { history } = this.props;
-  //   history.push('/feedback');
-  // }
-
   handleNext = () => {
     const number = 4;
     const { updateIndex, index } = this.props;
@@ -68,6 +63,9 @@ class Answers extends Component {
       });
     } else {
       updateIndex(1);
+      this.setState({
+        ATIVO: false,
+      }, this.shuffledAnswers);
     }
   }
 
@@ -130,7 +128,6 @@ Answers.propTypes = {
   index: PropTypes.number,
   addToken: PropTypes.func,
   updateIndex: PropTypes.func,
-  history: PropTypes.obj,
 }.isRequired;
 
 const mapStateToProps = (state) => ({
