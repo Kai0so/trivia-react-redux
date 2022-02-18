@@ -5,8 +5,8 @@ class Timer extends Component {
   constructor() {
     super();
     this.state = {
-      seconds: 30,
-      ATIVO: false,
+      seconds: 30, // pausar quando selecionar e atualizar para 30 quando apertar o next
+      // capturar o estado pausado e mandar para a Answer
     };
   }
 
@@ -25,19 +25,15 @@ class Timer extends Component {
       if (seconds === 0) {
         clearInterval(interval);
         buttonDisabled();
-        this.setState(() => ({
-          ATIVO: true,
-        }));
       }
     }, second);
   }
 
   render() {
-    const { seconds, ATIVO } = this.state;
+    const { seconds } = this.state;
     return (
       <h3>
         Timer:
-        {ATIVO}
         {seconds}
       </h3>
     );

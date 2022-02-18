@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../components/Header';
+import Header from './Header';
 
 class FeedbackPage extends React.Component {
   render() {
@@ -13,6 +13,7 @@ class FeedbackPage extends React.Component {
           {/* { PONTUAÇÃO FINAL } */}
         </h2>
 
+        <h1 data-testid="feedback-text"> Well Done! </h1>
         {/* se (acertou 3 ou mais perguntas ) {
           return (<h1 data-testid="feedback-text"> Well Done! </h1>)
         } senão {
