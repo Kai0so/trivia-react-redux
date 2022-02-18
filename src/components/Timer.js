@@ -5,7 +5,8 @@ class Timer extends Component {
   constructor() {
     super();
     this.state = {
-      seconds: 30,
+      seconds: 30, // pausar quando selecionar e atualizar para 30 quando apertar o next
+      // capturar o estado pausado e mandar para a Answer
     };
   }
 

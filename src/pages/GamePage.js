@@ -15,7 +15,6 @@ class GamePage extends React.Component {
       triviaCode: {},
       result: {},
       apiLoading: true,
-      indexQuestion: 0,
     };
   }
 
@@ -51,7 +50,8 @@ class GamePage extends React.Component {
     }
 
     render() {
-      const { result, apiLoading, indexQuestion } = this.state;
+      const { result, apiLoading } = this.state;
+      const { index } = this.props;
 
       return (
         <>
@@ -62,30 +62,33 @@ class GamePage extends React.Component {
 
             <section>
               <h1 data-testid="question-category">
-                {result.results[0].category}
+                {result.results[index].category}
               </h1>
               <h1 data-testid="question-text">
-                {result.results[0].question}
+                {result.results[index].question}
               </h1>
 
               <Answers
                 result={ result }
-                index={ indexQuestion }
-                type={ result.results[indexQuestion].type }
+                index={ index }
+                type={ result.results[index].type }
               />
-              <button type="button" data-testid="btn-next"> Próxima </button>
             </section>)}
         </>
       );
     }
 }
 
-GamePage.propTypes = {
-  addToken: PropTypes.func,
-}.isRequired;
+const mapStateToProps = (state) => ({
+  index: state.gameReducer.index,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   addToken: (token) => dispatch(actionToken(token)),
 });
 
-export default connect(null, mapDispatchToProps)(GamePage);
+GamePage.propTypes = {
+  index: PropTypes.number,
+}.isRequired;
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
